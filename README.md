@@ -16,6 +16,7 @@ See also http://github.com/startup-class/dotfiles and
 for more details.
 
 
+Edited to use Vim instead of emacs and to use tmux instead of screen.
 
 
 
