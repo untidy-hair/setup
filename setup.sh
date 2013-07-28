@@ -2,10 +2,12 @@
 # Simple setup.sh for configuring Ubuntu 12.04 LTS EC2 instance
 # for headless setup. 
 
+sudo apt-get -qq update
 # Install nvm: node-version manager
 # https://github.com/creationix/nvm
 sudo apt-get install -y git
 sudo apt-get install -y curl
+sudo apt-get install -y python-software-properties python g++ make
 curl https://raw.github.com/creationix/nvm/master/install.sh | sh
 
 # Load nvm and install latest production node
@@ -21,11 +23,8 @@ npm install -g jshint
 # See: http://nodejs.org/api/repl.html#repl_repl
 sudo apt-get install -y rlwrap
 
-# Install emacs24
-# https://launchpad.net/~cassou/+archive/emacs
-sudo apt-add-repository -y ppa:cassou/emacs
-sudo apt-get -qq update
-sudo apt-get install -y emacs24-nox emacs24-el emacs24-common-non-dfsg
+# Install tmux 
+sudo apt-get install tmux
 
 # Install Heroku toolbelt
 # https://toolbelt.heroku.com/debian
@@ -36,13 +35,16 @@ cd $HOME
 if [ -d ./dotfiles/ ]; then
     mv dotfiles dotfiles.old
 fi
-if [ -d .emacs.d/ ]; then
-    mv .emacs.d .emacs.d~
-fi
-git clone https://github.com/startup-class/dotfiles.git
-ln -sb dotfiles/.screenrc .
+
+git clone https://github.com/untidy-hair/dotfiles.git
+ln -sb dotfiles/.tmux.conf .
 ln -sb dotfiles/.bash_profile .
 ln -sb dotfiles/.bashrc .
 ln -sb dotfiles/.bashrc_custom .
-ln -sf dotfiles/.emacs.d .
+ln -sb dotfiles/.vimrc .
+#ln -sf dotfiles/.emacs.d .
+ln -sb dotfiles/.jshintrc .
 
+# Install Vim Vundler and bundle Plugins
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+vim +BundleInstall +qall
