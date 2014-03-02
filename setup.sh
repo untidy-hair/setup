@@ -12,8 +12,8 @@ curl https://raw.github.com/creationix/nvm/master/install.sh | sh
 
 # Load nvm and install latest production node
 source $HOME/.nvm/nvm.sh
-nvm install v0.10.12
-nvm use v0.10.12
+nvm install v0.10.26
+nvm use v0.10.26
 
 # Install jshint to allow checking of JS code within emacs
 # http://jshint.com/
@@ -23,12 +23,13 @@ npm install -g jshint
 # See: http://nodejs.org/api/repl.html#repl_repl
 sudo apt-get install -y rlwrap
 
-# Install tmux 
-sudo apt-get install tmux
+# Install vim/tmux 
+sudo apt-get install -y vim
+sudo apt-get install -y tmux
 
 # Install Heroku toolbelt
 # https://toolbelt.heroku.com/debian
-wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+# wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 
 # git pull and install dotfiles as well
 cd $HOME
@@ -44,6 +45,7 @@ ln -sb dotfiles/.bashrc_custom .
 ln -sb dotfiles/.vimrc .
 #ln -sf dotfiles/.emacs.d .
 ln -sb dotfiles/.jshintrc .
+ln -sb dotfiles/.gitconfig .
 
 # Install Vim Vundler and bundle Plugins
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
